@@ -1,6 +1,87 @@
-@numkeysize: 80px;
+@numkeysize: 130px;
+@numkey_fontsize: 35px;
+@inputpanel_fontsize: 20px;
+@label_fontsize: 20px;
+@operation_buttonsize: 100px;
+@operation_buttonfont: 50px;
 
-.NumKeypad > div > button {
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
+}
+
+.inputcard {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputcard__label {
+    align-self: center;
+    font-size: @label_fontsize;
+}
+
+.inputcard__cardnumber {
+    font-size: @inputpanel_fontsize;
+}
+
+.inputcard__numkeypad, .inputpin__numkeypad {
+    button {
+        font-size: @numkey_fontsize;
+        height:@numkeysize;
+        width:@numkeysize;
+    }
+}
+
+.inputpin {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputpin__label {
+    align-self: center;
+    font-size: @label_fontsize;
+}
+
+.inputpin__pincode {
+    font-size: @inputpanel_fontsize;
+}
+
+.inputpin__reset {
+    align-self: center;
+    font-size: @numkey_fontsize;
     height:@numkeysize;
     width:@numkeysize;
+}
+
+.operations {
+    display: flex;
+    flex-direction: column;
+}
+
+.operations__balance {
+    height: @operation_buttonsize;
+    font-size: @operation_buttonfont;
+}
+
+.operations__withdrawal {
+    height: @operation_buttonsize;
+    font-size: @operation_buttonfont;
+}
+
+.operations__reset {
+    height: @operation_buttonsize;
+    font-size: @operation_buttonfont;
+}
+
+.balance {
+    display: flex;
+    flex-direction: column;
 }

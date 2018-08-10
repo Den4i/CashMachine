@@ -19,13 +19,13 @@ const Operations = (props) => {
     };
 
   return (
-       <div align="center">
-           <button onClick={() => {operationSave(); props.history.push('balance/')}}>Баланс</button>
-           <button onClick={() => props.history.push('withdrawal/')}>Снять сумму</button>
+       <div className={'operations'}>
+           <button onClick={() => {operationSave(); props.history.push('balance/')}} className={'operations__balance'}>Баланс</button>
+           <button onClick={() => props.history.push('withdrawal/')} className={'operations__withdrawal'}>Снять сумму</button>
            <button onClick={() => {
                     props.dispatch(push('/'));
                     props.dispatch({type: 'RESET'});
-           }}>Выход</button>
+           }} className={'operations__reset'}>Выход</button>
        </div>
   )
 };

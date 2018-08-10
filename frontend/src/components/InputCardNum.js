@@ -33,16 +33,23 @@ class InputCardNum extends React.Component{
         }
     };
 
+    dispatchOk = () => {
+        this.props.dispatch(checkCardNumber());
+    };
+
+    dispatchClear = () => {
+        this.setState({'cardNumber': ''});
+    };
+
     render(){
         return (
-            <div align="center">
-                <div><label>Введите 16-значный номер карты</label></div>
-                <InputMask type='text' name='cardNumber' value={this.state.cardNumber}
-                           mask="9999 9999 9999 9999" maskChar="*"/>
-                <NumKeypad pusher={this.pusher}/>
-
-                <button onClick={() => {this.props.dispatch(checkCardNumber())}}>OK</button>
-                <button onClick={() => {this.setState({'cardNumber': ''})}}>Очистить</button>
+            <div className={'inputcard'}>
+                <label className={'inputcard__label'}>Введите 16-значный номер карты</label>
+                <InputMask className={'inputcard__cardnumber'} type='text' name='cardNumber' value={this.state.cardNumber}
+                                mask="9999 9999 9999 9999" maskChar="*" />
+                <div className={'inputcard__numkeypad'}>
+                    <NumKeypad pusher={this.pusher} dispatchOk={this.dispatchOk} dispatchClear={this.dispatchClear}/>
+                </div>
             </div>
         )
     }

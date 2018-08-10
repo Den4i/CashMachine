@@ -14,16 +14,16 @@ const Balance = (props) => {
         timezone: 'Europe/Moscow'
     };
     return (
-          <div align="center">
-              <div>{new Date().toLocaleDateString('ru', options)}</div>
-              <div>Номер карты: {cardNumber}</div>
-              <div>Баланс: {balance}</div>
-              <div>
-                  <button onClick={()=> props.history.goBack()}>Назад</button>
+          <div className={'balance'}>
+              <label className={'balance__date'}>Дата операции: {new Date().toLocaleDateString('ru', options)}</label>
+              <div className={'balance__cardNumber'}>Номер карты: {cardNumber}</div>
+              <div className={'balance__balance'}>Баланс: {balance}</div>
+              <div className={'balance__footer'}>
+                  <button onClick={()=> props.history.goBack()} className={'balance__back'}>Назад</button>
                   <button onClick={() => {
-                    props.dispatch(push('/'));
-                    props.dispatch({type: 'RESET'});
-                  }}>Выход</button>
+                        props.dispatch(push('/'));
+                        props.dispatch({type: 'RESET'});
+                  }} className={'balance__reset'}>Выход</button>
               </div>
           </div>
     )

@@ -25,24 +25,32 @@ class InputPincode extends React.Component {
         }
     };
 
-    componentWillUpdate = () => {
+    componentDidUpdate = () => {
         this.props.dispatch({
             type: 'SET_PINCODE',
             pincode: this.state.pincode,
         });
     };
 
+    dispatchOk = () => {
+        this.props.dispatch(checkPincode());
+    };
+
+    dispatchClear = () => {
+        this.setState({'pincode': ''});
+    };
+
     render() {
         let {pincode} = this.props;
         return (
-            <div align="center">
-                <div><label>Введите 4-значный PIN</label></div>
-                <InputMask type='text' name='pincode' value={pincode} mask="9999" maskChar="*"/>
-                <NumKeypad pusher={this.pusher}/>
+            <div className={'inputpin'}>
+                <label className={'inputpin__label'}>Введите 4-значный PIN</label>
+                <InputMask className={'inputpin__pincode'} type='text' name='pincode' value={pincode} mask="9999" maskChar="*"/>
+                <div className={'inputpin__numkeypad'}>
+                    <NumKeypad pusher={this.pusher} dispatchOk={this.dispatchOk} dispatchClear={this.dispatchClear}/>
+                </div>
 
-                <button onClick={() =>{this.props.dispatch(checkPincode())}}>OK</button>
-                <button onClick={() => {this.setState({'pincode': ''})}}>Очистить</button>
-                <button onClick={() => {
+                <button className={'inputpin__reset'} onClick={() => {
                     this.props.dispatch(push('/'));
                     this.props.dispatch({type: 'RESET'});
                 }}>Выход</button>
