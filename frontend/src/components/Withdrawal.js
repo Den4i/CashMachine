@@ -3,7 +3,7 @@ import NumKeypad from './NumKeypad';
 import {getBalance, getCardId, getCardNumber} from "../store/reducers";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {checkAmount} from '../actions/actions';
+import {checkAmount, checkPincode} from '../actions/actions';
 import {push} from "react-router-redux";
 import InputMask from 'react-input-mask';
 
@@ -33,22 +33,30 @@ class Withdrawal extends React.Component{
         });
     };
 
+    dispatchOk = () => {
+        this.saveAmount();
+        this.props.dispatch(checkAmount());
+    };
+
+    dispatchClear = () => {
+        this.setState({'amountWithdrawal': ''});
+    };
+
     render(){
         return (
-          <div align="center">
-              <div><label>Введите сумму для снятия</label></div>
-              <InputMask type='text' name='amountWithdrawal' mask={9999999} value={this.state.amountWithdrawal}/>
-              <NumKeypad pusher={this.pusher}/>
-              <button onClick={() => {
-                  this.saveAmount();
-                  this.props.dispatch(checkAmount());
-                }}>OK</button>
-              <button onClick={() => {this.setState({'amountWithdrawal': ''})}}>Очистить</button>
-              <button onClick={() => this.props.history.goBack()}>Назад</button>
-              <button onClick={() => {
-                    this.props.dispatch(push('/'));
-                    this.props.dispatch({type: 'RESET'});
-              }}>Выход</button>
+          <div className={'withdrawal'}>
+              <label className={'withdrawal__label'}>Введите сумму для снятия</label>
+              <InputMask type='text' name='amountWithdrawal' mask={9999999} value={this.state.amountWithdrawal} className={'withdrawal_inputmask'}/>
+              <div className={'withdrawal__numkeypad'}>
+                <NumKeypad pusher={this.pusher} dispatchOk={this.dispatchOk} dispatchClear={this.dispatchClear}/>
+              </div>
+              <div className={'withdrawal__footer'}>
+                  <button onClick={() => this.props.history.goBack()}>Назад</button>
+                  <button onClick={() => {
+                        this.props.dispatch(push('/'));
+                        this.props.dispatch({type: 'RESET'});
+                  }}>Выход</button>
+              </div>
           </div>
         )
     }
