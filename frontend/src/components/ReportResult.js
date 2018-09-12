@@ -15,12 +15,12 @@ const ReportResult = (props) => {
         minute: 'numeric'
     };
     return (
-        <div align="center">
-            <div>Номер карты: {cardNumber}</div>
-            <div>Дата операции: {new Date().toLocaleDateString('ru', options)}</div>
-            <div>Баланс: {balance}</div>
-            <div>Сумма снятия: {amount}</div>
-            <div>
+        <div className={'result'}>
+            <div className={'result__cardNumber'}>Номер карты: {cardNumber}</div>
+            <div className={'result__dateOperation'}>Дата операции: {new Date().toLocaleDateString('ru', options)}</div>
+            <div className={'result__balance'}>Баланс: {balance}</div>
+            <div className={'result__amount'}>Сумма снятия: {amount}</div>
+            <div className={'result_footer'}>
                 <button onClick={() => props.history.goBack()}>Назад</button>
                 <button onClick={() => {
                     props.dispatch(push('/'));

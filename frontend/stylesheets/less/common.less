@@ -2,8 +2,8 @@
 @numkey_fontsize: 35px;
 @inputpanel_fontsize: 20px;
 @label_fontsize: 20px;
-@operation_buttonsize: 100px;
-@operation_buttonfont: 50px;
+@footer_button_height: 50px;
+@footer_button_fontsize: 30px;
 
 html {
     height: 100%;
@@ -45,12 +45,12 @@ body {
     flex-direction: column;
 }
 
-.inputpin__label {
+.inputpin__label, .withdrawal__label {
     align-self: center;
     font-size: @label_fontsize;
 }
 
-.inputpin__pincode {
+.inputpin__pincode, .withdrawal_inputmask {
     font-size: @inputpanel_fontsize;
 }
 
@@ -66,22 +66,36 @@ body {
     flex-direction: column;
 }
 
-.operations__balance {
-    height: @operation_buttonsize;
-    font-size: @operation_buttonfont;
+.operations__balance, .operations__withdrawal, .operations__reset {
+    height: 100px;
+    font-size: 50px;
 }
 
-.operations__withdrawal {
-    height: @operation_buttonsize;
-    font-size: @operation_buttonfont;
-}
-
-.operations__reset {
-    height: @operation_buttonsize;
-    font-size: @operation_buttonfont;
-}
-
-.balance {
+.result, .balance {
     display: flex;
     flex-direction: column;
+    div {
+        font-size: 30px;
+    }
+}
+
+.withdrawal {
+    display: flex;
+    flex-direction: column;
+}
+
+.withdrawal__numkeypad {
+    button {
+        font-size: @numkey_fontsize;
+        height:@numkeysize;
+        width:@numkeysize;
+    }
+}
+
+.withdrawal__footer, .balance__footer, .result_footer  {
+    button{
+        height: @footer_button_height;
+        font-size: @footer_button_fontsize;
+        width: 50%;
+    }
 }
