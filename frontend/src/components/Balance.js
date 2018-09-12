@@ -15,7 +15,7 @@ const Balance = (props) => {
     };
     return (
           <div className={'balance'}>
-              <label className={'balance__date'}>Дата операции: {new Date().toLocaleDateString('ru', options)}</label>
+              <div className={'balance__date'}>Дата операции: {new Date().toLocaleDateString('ru', options)}</div>
               <div className={'balance__cardNumber'}>Номер карты: {cardNumber}</div>
               <div className={'balance__balance'}>Баланс: {balance}</div>
               <div className={'balance__footer'}>
