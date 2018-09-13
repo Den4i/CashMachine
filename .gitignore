@@ -17,3 +17,4 @@ db.sqlite3
 
 frontend/stylesheets/less/*.css*
 
+.pytest_cache/
